@@ -1,4 +1,3 @@
-from unittest import result
 from flask import Flask, request, abort
 
 from linebot import (
@@ -30,21 +29,12 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-#0310
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
-
-    msg=event.message.text
-    RPmsg="gogo"
-
-    if "a" in msg:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=RPmsg))
-
-
-
 
 import os
 if __name__ == "__main__":
